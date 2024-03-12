@@ -14,7 +14,7 @@ export async function getUser() {
     },
   };
   const response = await fetch(
-    `${process.env.REACT_APP_HOST}/660/users/${browserData.cbid}`,
+    `https://bookbrowse.onrender.com/660/users/${browserData.cbid}`,
     requestOptions
   );
   if (!response.ok) {
@@ -34,7 +34,7 @@ export async function getUserOrders() {
     },
   };
   const response = await fetch(
-    `${process.env.REACT_APP_HOST}/660/orders?user.id=${browserData.cbid}`,
+    `https://bookbrowse.onrender.com/660/orders?user.id=${browserData.cbid}`,
     requestOptions
   );
   if (!response.ok) {
@@ -65,7 +65,7 @@ export async function createOrder(cartList, total, user) {
     body: JSON.stringify(order),
   };
   const response = await fetch(
-    `${process.env.REACT_APP_HOST}/660/orders`,
+    `https://bookbrowse.onrender.com/660/orders`,
     requestOptions
   );
   if (!response.ok) {

@@ -5,7 +5,7 @@ export async function login(authDetail) {
     body: JSON.stringify(authDetail),
   };
   const response = await fetch(
-    `${process.env.REACT_APP_HOST}/login`,
+    `https://bookbrowse.onrender.com/login`,
     requestOptions
   );
   if (!response.ok) {
@@ -28,7 +28,7 @@ export async function register(authDetail) {
   };
 
   const response = await fetch(
-    `${process.env.REACT_APP_HOST}/register`,
+    `https://bookbrowse.onrender.com/register`,
     requestOptions
   );
   if (!response.ok) {

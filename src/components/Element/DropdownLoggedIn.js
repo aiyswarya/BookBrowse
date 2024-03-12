@@ -6,11 +6,13 @@ import { toast } from "react-toastify";
 export const DropdownLoggedIn = ({ setDropdown }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       try {
         const data = await getUser();
+        setLoading(false);
         data.email ? setUser(data) : handleLogout();
       } catch (error) {
         toast.error(error.message, {
@@ -34,7 +36,9 @@ export const DropdownLoggedIn = ({ setDropdown }) => {
       className="select-none	absolute top-10 right-0 z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
     >
       <div className="py-3 px-4 text-sm text-gray-900 dark:text-white">
-        <div className="font-medium truncate">{user.email}</div>
+        <div className="font-medium truncate">
+          {loading ? <p>Loading...</p> : user.email}
+        </div>
       </div>
       <ul
         className="py-1 text-sm text-gray-700 dark:text-gray-200"
